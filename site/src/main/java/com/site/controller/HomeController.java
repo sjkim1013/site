@@ -35,5 +35,12 @@ public class HomeController {
 		
 		return "home";
 	}
+
+	// 메인 화면 iframe
+	@RequestMapping(value="/main", method=RequestMethod.GET)
+	public String getList(Model model) throws Exception {
+		
+		return "main";
+	}
 	
 }
