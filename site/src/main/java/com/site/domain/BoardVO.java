@@ -2,29 +2,29 @@ package com.site.domain;
 
 import java.util.Date;
 
-public class NoticeVO {
+public class BoardVO {
 
 /*
-	CREATE TABLE tbl_notice (
-		notice_id INT NOT NULL AUTO_INCREMENT,
+	CREATE TABLE tbl_board (
+		board_id INT NOT NULL AUTO_INCREMENT,
 		title VARCHAR(100) NOT NULL,
 		writer VARCHAR(30),
 		content TEXT,
-		createdTime TIMESTAMP NOT NULL default NOW(),
-		PRIMARY KEY (notice_id)
+		createTime TIMESTAMP NOT NULL default NOW(),
+		PRIMARY KEY (board_id)
 	)
  */
-	private int notice_id;
+	private int board_id;
 	private String title;
 	private String writer;
 	private String content;
-	private Date createdTime;
+	private Date createTime;
 	
-	public int getNotice_id() {
-		return notice_id;
+	public int getBoard_id() {
+		return board_id;
 	}
-	public void setNotice_id(int notice_id) {
-		this.notice_id = notice_id;
+	public void setBoard_id(int board_id) {
+		this.board_id = board_id;
 	}
 	public String getTitle() {
 		return title;
@@ -44,11 +44,11 @@ public class NoticeVO {
 	public void setContent(String content) {
 		this.content = content;
 	}
-	public Date getCreatedTime() {
-		return createdTime;
+	public Date getcreateTime() {
+		return createTime;
 	}
-	public void setCreatedTime(Date createdTime) {
-		this.createdTime = createdTime;
+	public void setcreateTime(Date createTime) {
+		this.createTime = createTime;
 	}
 	
 }

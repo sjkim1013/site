@@ -21,7 +21,7 @@
 		<div class="col">
 			<div class="row">
 				<div class="col-6">
-					<h3>Notice</h3>
+					<h3>Board</h3>
 				</div>
 				<div class="col-6 text-end">
 					<button class="btn-sm btn-dark">글쓰기</button>
@@ -33,7 +33,7 @@
 		<table class="table">
 		<thead>
 			<tr>
-				<th scope="col">No</th>
+				<th scope="col">No.</th>
 				<th scope="col">Title</th>
 				<th scope="col">Time</th>
 			</tr>
@@ -42,10 +42,10 @@
 		
 			<c:forEach items="${list}" var="list">
 			<tr>
-				<th scope="row">${list.notice_id}</th>
+				<th scope="row">${list.board_id}</th>
 				<td>${list.title}</td>
 				<td>
-					<fmt:formatDate value="${list.createdTime}" pattern="yyyy-MM-dd"/>
+					<fmt:formatDate value="${list.createTime}" pattern="yyyy-MM-dd"/>
 				</td>
 			</tr>
 			</c:forEach>
@@ -61,7 +61,7 @@
 <script>
 	function onPageLoad() {
 		if(parent) {
-			parent.onClickNav($("#nav_notice", window.parent.document));
+			parent.onClickNav($("#nav_board", window.parent.document));
 		}
 	}
 </script>

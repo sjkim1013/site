@@ -1,6 +1,7 @@
 package com.site.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -8,26 +9,27 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
-import com.site.domain.NoticeVO;
-import com.site.service.NoticeService;
+import com.site.domain.BoardVO;
+import com.site.service.BoardService;
 
 @Controller
-@RequestMapping("/notice/*")
-public class NoticeController {
+@RequestMapping("/board/*")
+public class BoardController {
 	
 	@Inject
-	NoticeService noticeService;
+	BoardService boardService;
 
 	// 게시물 목록
 	@RequestMapping(value="/list", method=RequestMethod.GET)
-	public String getList(Model model) throws Exception {
+	public String getList(@RequestParam Map<String, Object> param, Model model) throws Exception {
 		
-		List<NoticeVO> list = null;
-		list = noticeService.list();
+		List<BoardVO> list = null;
+		list = boardService.list();
 		
 		model.addAttribute("list", list);
-		return "notice/noticeList";
+		return "board/boardList";
 	}
 
 }

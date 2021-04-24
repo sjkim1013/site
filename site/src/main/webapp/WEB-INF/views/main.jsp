@@ -17,9 +17,9 @@
 <body onload="onPageLoad()">
 <div class="container mt-3 p-5 bg-light rounded">
 	<h1>JayTR에 오신 것을 환영합니다.</h1>
-	<p>공지사항을 확인해주세요.</p>
+	<p>게시판을 확인해주세요.</p>
 	<br/>
-	<a type="button" class="btn btn-dark" href="/notice/list">View Notices</a>
+	<a type="button" class="btn btn-dark" href="/board/list">View Board</a>
 </div>
 
 	<!-- Bootstrap Bundle with Popper -->

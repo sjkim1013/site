@@ -30,7 +30,7 @@
 						<a id="nav_main" class="nav-link active" aria-current="page" target="mainIframe" href="/main">Home</a>
 					</li>
 					<li class="nav-item">
-						<a id="nav_notice" class="nav-link" aria-current="page" target="mainIframe" href="/notice/list">Notice</a>
+						<a id="nav_board" class="nav-link" aria-current="page" target="mainIframe" href="/board/list">Board</a>
 					</li>
 				</ul>
 			</div>
@@ -70,8 +70,7 @@
 		// 클릭한 메뉴 활성화
 		$(".nav-link").attr("class", "nav-link");
 		$(obj).attr("class", "nav-link active");
-		
-		// 모바일일 경우 메뉴바 Collaspe
+		// 모바일일 경우 클릭시 메뉴바 사라짐
 		$("#navbars").attr("class", "navbar-collapse collapse");
 	}
 	

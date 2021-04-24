@@ -6,17 +6,17 @@ import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
 
-import com.site.dao.NoticeDAO;
-import com.site.domain.NoticeVO;
+import com.site.dao.BoardDAO;
+import com.site.domain.BoardVO;
 
 @Service
-public class NoticeServiceImpl implements NoticeService {
+public class BoardServiceImpl implements BoardService {
 
 	@Inject
-	private NoticeDAO dao;
+	private BoardDAO dao;
 	
 	@Override
-	public List<NoticeVO> list() throws Exception {
+	public List<BoardVO> list() throws Exception {
 		return dao.list();
 	}
 

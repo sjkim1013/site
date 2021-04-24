@@ -2,14 +2,14 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.site.mappers.notice">
+<mapper namespace="com.site.mappers.board">
 
 	<!-- 게시물 목록 -->
-	<select id="list" resultType="com.site.domain.NoticeVO">
+	<select id="list" resultType="com.site.domain.BoardVO">
 		select
-			notice_id, title, content, writer, createdTime
-		from tbl_notice
-		order by notice_id desc
+			board_id, title, content, writer, createTime
+		from tbl_board
+		order by board_id desc
 		limit 10
 	</select>
 

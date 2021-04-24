@@ -7,17 +7,17 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
-import com.site.domain.NoticeVO;
+import com.site.domain.BoardVO;
 
 @Repository
-public class NoticeDAOImpl implements NoticeDAO {
+public class BoardDAOImpl implements BoardDAO {
 	@Inject
 	private SqlSession sql;
 	
-	private static String namespace = "com.site.mappers.notice";
+	private static String namespace = "com.site.mappers.board";
 
 	@Override
-	public List<NoticeVO> list() throws Exception {
+	public List<BoardVO> list() throws Exception {
 
 		return sql.selectList(namespace +".list");
 	}
