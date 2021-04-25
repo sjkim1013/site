@@ -36,8 +36,14 @@
 			</div>
 		</div>
 	</nav>
-	<div id="subNavbar" class="d-flex py-1 bg-secondary">
-		<div class="container ps-2 fw-bold">Welcome to JayTR</div>
+	<div id="subNavbar" class="d-flex border-bottom py-1">
+		<div class="container ps-2">
+			<nav aria-label="breadcrumb" style="--bs-breadcrumb-divider: '>';">
+				<ol id="breadcrumb" class="breadcrumb mb-0">
+					<li class="breadcrumb-item fw-bold" aria-current="main">Welcome to JayTR</li>
+				</ol>
+			</nav>
+		</div>
 	</div>
 </div>
 

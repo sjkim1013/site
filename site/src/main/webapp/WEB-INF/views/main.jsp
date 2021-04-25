@@ -29,6 +29,9 @@
 	function onPageLoad() {
 		if(parent) {
 			parent.onClickNav($("#nav_main", window.parent.document));
+			//서브 네비에 항목 출력
+			$("#breadcrumb", window.parent.document).empty()
+			$("#breadcrumb", window.parent.document).append("<li class='breadcrumb-item fw-bold' aria-current='main'>Welcome to JayTR</li>")
 		}
 	}
 </script>
