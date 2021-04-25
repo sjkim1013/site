@@ -32,4 +32,13 @@ public class BoardController {
 		return "board/boardList";
 	}
 
+	// 게시물 등록
+	@RequestMapping(value="/write", method=RequestMethod.POST)
+	public String postWrite(BoardVO vo) throws Exception {
+		
+		boardService.write(vo);
+		
+		return "redirect:/board/list";
+	}
+
 }

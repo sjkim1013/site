@@ -5,20 +5,28 @@ import java.util.Date;
 public class BoardVO {
 
 /*
-	CREATE TABLE tbl_board (
-		board_id INT NOT NULL AUTO_INCREMENT,
-		title VARCHAR(100) NOT NULL,
-		writer VARCHAR(30),
-		content TEXT,
-		createTime TIMESTAMP NOT NULL default NOW(),
-		PRIMARY KEY (board_id)
-	)
+DROP TABLE tbl_board;
+CREATE TABLE tbl_board (
+	board_id INT NOT NULL AUTO_INCREMENT,
+	title VARCHAR(100) NOT NULL,
+	writer VARCHAR(30),
+	content TEXT,
+	createTime TIMESTAMP NOT NULL default NOW(),
+	viewCnt INT default 0,
+	PRIMARY KEY (board_id)
+);
+INSERT INTO tbl_board (title, writer, content)
+SELECT '테스트1', '김선재', '테스트 게시글 입니다.' UNION ALL
+SELECT '테스트2', '김선재', '테스트 게시글 입니다.' UNION ALL
+SELECT '테스트3', '김선재', '테스트 게시글 입니다.'
+;
  */
 	private int board_id;
 	private String title;
 	private String writer;
 	private String content;
 	private Date createTime;
+	private int viewCnt;
 	
 	public int getBoard_id() {
 		return board_id;
@@ -49,6 +57,12 @@ public class BoardVO {
 	}
 	public void setcreateTime(Date createTime) {
 		this.createTime = createTime;
+	}
+	public int getViewCnt() {
+		return viewCnt;
+	}
+	public void setViewCnt(int viewCnt) {
+		this.viewCnt = viewCnt;
 	}
 	
 }

@@ -24,13 +24,13 @@
 					<h3>Board</h3>
 				</div>
 				<div class="col-6 text-end">
-					<button class="btn-sm btn-dark">글쓰기</button>
+					<button class="btn-sm btn-dark" data-bs-toggle="modal" data-bs-target="#writeModal">글쓰기</button>
 				</div>
 			</div>
 		</div>
 	</div>
 	<div class="row bg-white p-4">
-		<table class="table">
+		<table class="table table-hover">
 		<thead>
 			<tr>
 				<th scope="col">No.</th>
@@ -53,6 +53,35 @@
 		</tbody>
 		</table>
 	</div>
+	
+	<!-- 글쓰기 Modal -->
+	<div class="modal fade" id="writeModal" tabindex="-1" aria-labelledby="writeModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content p-2">
+			<form action="/board/write" method="post">
+				<div class="modal-header">
+					<h5 class="modal-title" id="writeModalLabel">글쓰기</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+				<div class="modal-body">
+					<div class="mb-1">
+						<input type="text" class="form-control" name="title" placeholder="제목" area-label="게시글 제목">
+					</div>
+					<div class="mb-1">
+						<input type="text" class="form-control" name="writer" placeholder="작성자" area-label="게시글 작성자">
+					</div>
+					<div class="mb-1">
+						<textarea class="form-control" name="content" placeholder="본문" rows="5"></textarea>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+					<button type="submit" class="btn btn-dark">등록</button>
+				</div>
+			</form>
+			</div>
+		</div>
+	</div>
 </div>
 
 	<!-- Bootstrap Bundle with Popper -->
@@ -62,6 +91,9 @@
 	function onPageLoad() {
 		if(parent) {
 			parent.onClickNav($("#nav_board", window.parent.document));
+			//서브 네비에 항목 출력
+			$("#breadcrumb", window.parent.document).empty()
+			$("#breadcrumb", window.parent.document).append("<li class='breadcrumb-item fw-bold active' aria-current='main'>Board</li>")
 		}
 	}
 </script>
