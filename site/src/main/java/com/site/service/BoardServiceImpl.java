@@ -21,8 +21,20 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 	@Override
+	public BoardVO view(int bid) throws Exception {
+
+		return dao.view(bid);
+	}
+
+	@Override
 	public int write(BoardVO vo) throws Exception {
 		return dao.write(vo);
+	}
+
+	@Override
+	public int delete(int bid) throws Exception {
+		
+		return dao.delete(bid);
 	}
 
 }

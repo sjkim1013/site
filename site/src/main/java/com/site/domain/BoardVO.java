@@ -7,13 +7,13 @@ public class BoardVO {
 /*
 DROP TABLE tbl_board;
 CREATE TABLE tbl_board (
-	board_id INT NOT NULL AUTO_INCREMENT,
+	bid INT NOT NULL AUTO_INCREMENT,
 	title VARCHAR(100) NOT NULL,
 	writer VARCHAR(30),
 	content TEXT,
 	createTime TIMESTAMP NOT NULL default NOW(),
 	viewCnt INT default 0,
-	PRIMARY KEY (board_id)
+	PRIMARY KEY (bid)
 );
 INSERT INTO tbl_board (title, writer, content)
 SELECT '테스트1', '김선재', '테스트 게시글 입니다.' UNION ALL
@@ -21,18 +21,18 @@ SELECT '테스트2', '김선재', '테스트 게시글 입니다.' UNION ALL
 SELECT '테스트3', '김선재', '테스트 게시글 입니다.'
 ;
  */
-	private int board_id;
+	private int bid;
 	private String title;
 	private String writer;
 	private String content;
 	private Date createTime;
 	private int viewCnt;
 	
-	public int getBoard_id() {
-		return board_id;
+	public int getBid() {
+		return bid;
 	}
-	public void setBoard_id(int board_id) {
-		this.board_id = board_id;
+	public void setBid(int bid) {
+		this.bid = bid;
 	}
 	public String getTitle() {
 		return title;

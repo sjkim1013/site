@@ -17,11 +17,11 @@
 </head>
 <body onload="onPageLoad()">
 <div class="container mt-3 p-5 pt-4 bg-light rounded">
-	<div class="row border-bottom pb-1 mb-3">
+	<div class="row border-bottom border-secondary pb-1 mb-3">
 		<div class="col">
 			<div class="row">
 				<div class="col-6">
-					<h3>Board</h3>
+					<h3 class="fw-bold">Board</h3>
 				</div>
 				<div class="col-6 text-end">
 					<button class="btn-sm btn-dark" data-bs-toggle="modal" data-bs-target="#writeModal">글쓰기</button>
@@ -34,16 +34,18 @@
 		<thead>
 			<tr>
 				<th scope="col">No.</th>
-				<th scope="col">Title</th>
-				<th scope="col">Time</th>
+				<th scope="col">제목</th>
+				<th scope="col">작성일</th>
 			</tr>
 		</thead>
 		<tbody>
 		
 			<c:forEach items="${list}" var="list">
 			<tr>
-				<th scope="row">${list.board_id}</th>
-				<td>${list.title}</td>
+				<th scope="row">${list.bid}</th>
+				<td>
+					<a class="text-dark text-decoration-none" href="/board/view?bid=${list.bid}">${list.title}</a>
+				</td>
 				<td>
 					<fmt:formatDate value="${list.createTime}" pattern="yyyy-MM-dd"/>
 				</td>

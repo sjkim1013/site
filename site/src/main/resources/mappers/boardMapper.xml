@@ -7,10 +7,19 @@
 	<!-- 게시물 목록 -->
 	<select id="list" resultType="com.site.domain.BoardVO">
 		select
-			board_id, title, content, writer, createTime
+			bid, title, content, writer, createTime
 		from tbl_board
-		order by board_id desc
+		order by bid desc
 		limit 10
+	</select>
+
+	<!-- 게시물 목록 -->
+	<select id="view" parameterType="int" resultType="com.site.domain.BoardVO">
+		select
+			bid, title, content, writer, createTime
+		from tbl_board
+		where 1=1
+		and bid = #{bid}
 	</select>
 	
 	<!-- 게시물 작성 -->
@@ -24,6 +33,13 @@
 			#{writer},
 			#{content}
 		)
+	</insert>
+	
+	<!-- 게시물 삭제 -->
+	<insert id="delete" parameterType="int">
+		delete from tbl_board
+		where 1=1
+		and bid = #{bid}
 	</insert>
 
 </mapper>

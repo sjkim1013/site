@@ -31,12 +31,37 @@ public class BoardController {
 		model.addAttribute("list", list);
 		return "board/boardList";
 	}
+	
+	// 게시물 상세
+	@RequestMapping(value="/view", method=RequestMethod.GET)
+	public String getView(@RequestParam Map<String, Object> param, Model model) throws Exception {
+		
+		int bid = Integer.parseInt((String)param.get("bid"));
+		BoardVO vo  = boardService.view(bid);
+
+		// Content 줄바꿈 처리
+		vo.setContent(vo.getContent().replace("\r\n", "<br>"));
+		
+		model.addAttribute("view", vo);
+		return "board/boardDetail";
+	}
 
 	// 게시물 등록
 	@RequestMapping(value="/write", method=RequestMethod.POST)
 	public String postWrite(BoardVO vo) throws Exception {
 		
 		boardService.write(vo);
+		
+		return "redirect:/board/list";
+	}
+
+	// 게시물 삭제
+	@RequestMapping(value="/delete", method=RequestMethod.GET)
+	public String postDelete(@RequestParam Map<String, Object> param) throws Exception {
+		
+		int bid = Integer.parseInt((String)param.get("bid"));
+		
+		boardService.delete(bid);
 		
 		return "redirect:/board/list";
 	}
