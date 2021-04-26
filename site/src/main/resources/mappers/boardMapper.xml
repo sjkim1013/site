@@ -5,7 +5,7 @@
 <mapper namespace="com.site.mappers.board">
 
 	<!-- 게시물 목록 -->
-	<select id="list" resultType="com.site.domain.BoardVO">
+	<select id="select" resultType="com.site.domain.BoardVO">
 		select
 			bid, title, content, writer, createTime
 		from tbl_board
@@ -14,13 +14,23 @@
 	</select>
 
 	<!-- 게시물 목록 -->
-	<select id="view" parameterType="int" resultType="com.site.domain.BoardVO">
+	<select id="selectOne" parameterType="int" resultType="com.site.domain.BoardVO">
 		select
 			bid, title, content, writer, createTime
 		from tbl_board
 		where 1=1
 		and bid = #{bid}
 	</select>
+
+	<!-- 게시물 수정 -->
+	<update id="modify" parameterType="com.site.domain.BoardVO">
+		update tbl_board set
+			title = #{title},
+			writer = #{writer},
+			content = #{content}
+		where 1=1
+		and bid = #{bid}
+	</update>
 	
 	<!-- 게시물 작성 -->
 	<insert id="write" parameterType="com.site.domain.BoardVO">

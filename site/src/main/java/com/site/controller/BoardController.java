@@ -26,24 +26,44 @@ public class BoardController {
 	public String getList(@RequestParam Map<String, Object> param, Model model) throws Exception {
 		
 		List<BoardVO> list = null;
-		list = boardService.list();
+		list = boardService.select();
 		
 		model.addAttribute("list", list);
-		return "board/boardList";
+		return "/board/boardList";
 	}
 	
-	// 게시물 상세
+	// 게시물 상세 화면
 	@RequestMapping(value="/view", method=RequestMethod.GET)
 	public String getView(@RequestParam Map<String, Object> param, Model model) throws Exception {
 		
 		int bid = Integer.parseInt((String)param.get("bid"));
-		BoardVO vo  = boardService.view(bid);
+		BoardVO vo  = boardService.selectOne(bid);
 
 		// Content 줄바꿈 처리
 		vo.setContent(vo.getContent().replace("\r\n", "<br>"));
 		
 		model.addAttribute("view", vo);
-		return "board/boardDetail";
+		return "/board/boardDetail";
+	}
+	
+	// 게시물 수정 화면
+	@RequestMapping(value="/modify", method=RequestMethod.GET)
+	public String getModify(@RequestParam Map<String, Object> param, Model model) throws Exception {
+		
+		int bid = Integer.parseInt((String)param.get("bid"));
+		BoardVO vo  = boardService.selectOne(bid);
+		
+		model.addAttribute("view", vo);
+		return "/board/boardDetailModify";
+	}
+	
+	// 게시물 수정
+	@RequestMapping(value="/modify", method=RequestMethod.POST)
+	public String postModify(BoardVO vo) throws Exception {
+		
+		boardService.modify(vo);
+		
+		return "redirect:/board/view?bid="+ vo.getBid();
 	}
 
 	// 게시물 등록

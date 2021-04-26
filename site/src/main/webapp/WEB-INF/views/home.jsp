@@ -16,7 +16,7 @@
 </head>
 <body onload="onPageLoad()" class="overflow-hidden">
 <div id="header">
-	<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top py-1">
 		<div class="container">
 			<a class="navbar-brand fw-bolder me-5" href="/">JayTR</a>
 			<!-- 화면 축소 시 버튼 -->

@@ -17,6 +17,8 @@
 </head>
 <body onload="onPageLoad()">
 <div class="container mt-3 p-5 pt-4 bg-light rounded">
+	<form action="/board/modify" method="post">
+	<input type="hidden" name="bid" value="${view.bid}" />
 	<div class="row border-bottom border-secondary pb-1 mb-3">
 		<div class="col">
 			<div class="row">
@@ -24,37 +26,31 @@
 					<h3 class="fw-bold">Board</h3>
 				</div>
 				<div class="col-6 text-end">
-					<button type="button" class="btn-sm btn-danger">
-						<a class="text-white text-decoration-none" href="/board/delete?bid=${view.bid}">삭제</a>
-					</button>
-					<button type="button" class="btn-sm btn-dark">
-						<a class="text-white text-decoration-none" href="/board/modify?bid=${view.bid}">수정</a>
-					</button>
+					<button type="submit" class="btn-sm btn-dark">저장</button>
 					<button type="button" class="btn-sm btn-secondary">
-						<a class="text-white text-decoration-none" href="/board/list">목록</a>
+						<a class="text-white text-decoration-none" href="/board/view?bid=${view.bid}">뒤로</a>
 					</button>
 				</div>
 			</div>
 		</div>
 	</div>
 	<div class="row bg-white p-4">
-		<div class="border-bottom">
-			<h5 class="fw-bold">${view.title}</h5>
+		<div class="border-bottom pb-2">
+			<input type="text" class="form-control" name="title" placeholder="제목" area-label="게시글 제목" value="${view.title}">
 		</div>
-		<div class="border-bottom py-2" style="font-size:14px;">
-			<div>
+		<div class="row border-bottom py-2 align-items-center" style="font-size:14px;">
+			<div class="col-auto">
 				<span>작성자 : </span>
-				<span>${view.writer}</span>
 			</div>
-			<div>
-				<span>작성일자 : </span>
-				<span><fmt:formatDate value="${view.createTime}" pattern="yyyy-MM-dd HH:mm:ss"/></span>
+			<div class="col">
+				<input type="text" class="form-control" name="writer" placeholder="작성자" area-label="게시글 작성자" value="${view.writer}">
 			</div>
 		</div>
 		<div class="py-3">
-			<span>${view.content}</span>
+			<textarea class="form-control" name="content" placeholder="본문" rows="5">${view.content}</textarea>
 		</div>
 	</div>
+	</form>
 </div>
 
 	<!-- Bootstrap Bundle with Popper -->
@@ -67,7 +63,8 @@
 			//서브 네비에 항목 출력
 			$("#breadcrumb", window.parent.document).empty()
 			$("#breadcrumb", window.parent.document).append("<li class='breadcrumb-item fw-bold' aria-current='main'>Board</li>")
-			$("#breadcrumb", window.parent.document).append("<li class='breadcrumb-item fw-bold active' aria-current='main'>View</li>")
+			$("#breadcrumb", window.parent.document).append("<li class='breadcrumb-item fw-bold' aria-current='main'>View</li>")
+			$("#breadcrumb", window.parent.document).append("<li class='breadcrumb-item fw-bold active' aria-current='main'>Modify</li>")
 		}
 	}
 </script>

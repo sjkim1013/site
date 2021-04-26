@@ -16,14 +16,20 @@ public class BoardServiceImpl implements BoardService {
 	private BoardDAO dao;
 	
 	@Override
-	public List<BoardVO> list() throws Exception {
-		return dao.list();
+	public List<BoardVO> select() throws Exception {
+		return dao.select();
 	}
 
 	@Override
-	public BoardVO view(int bid) throws Exception {
+	public BoardVO selectOne(int bid) throws Exception {
 
-		return dao.view(bid);
+		return dao.selectOne(bid);
+	}
+
+	@Override
+	public int modify(BoardVO vo) throws Exception {
+
+		return dao.modify(vo);
 	}
 
 	@Override

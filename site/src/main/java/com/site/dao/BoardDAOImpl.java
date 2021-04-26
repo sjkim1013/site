@@ -17,15 +17,21 @@ public class BoardDAOImpl implements BoardDAO {
 	private static String namespace = "com.site.mappers.board";
 
 	@Override
-	public List<BoardVO> list() throws Exception {
+	public List<BoardVO> select() throws Exception {
 
-		return sql.selectList(namespace +".list");
+		return sql.selectList(namespace +".select");
 	}
 
 	@Override
-	public BoardVO view(int bid) throws Exception {
+	public BoardVO selectOne(int bid) throws Exception {
 		
-		return sql.selectOne(namespace +".view", bid);
+		return sql.selectOne(namespace +".selectOne", bid);
+	}
+
+	@Override
+	public int modify(BoardVO vo) throws Exception {
+		
+		return sql.update(namespace +".modify", vo);
 	}
 
 	@Override
