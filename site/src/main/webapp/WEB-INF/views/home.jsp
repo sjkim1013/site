@@ -12,6 +12,9 @@
     <!-- Bootstrap CSS -->
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
 	
+	<!-- MyCSS -->
+	<link href="/resources/css/MyCSS.css" rel="stylesheet" >
+	
 	<title>Bootstrap Site</title>
 </head>
 <body onload="onPageLoad()" class="overflow-hidden">
@@ -26,23 +29,34 @@
 
 			<div class="navbar-collapse collapse" id="navbars">
 				<ul class="navbar-nav me-auto mb-2 mb-lg-0">
-					<li class="nav-item">
-						<a id="nav_main" class="nav-link active" aria-current="page" target="mainIframe" href="/main">Home</a>
+					<li class="nav-item pe-1">
+						<a id="nav_main" class="nav-link active" target="mainIframe" href="/main">Home</a>
 					</li>
-					<li class="nav-item">
-						<a id="nav_board" class="nav-link" aria-current="page" target="mainIframe" href="/board/list">Board</a>
+					<li class="nav-item pe-1">
+						<a id="nav_board" class="nav-link" target="mainIframe" href="/board/list">Board</a>
+					</li>
+					<li class="nav-item pe-1 dropdown dropdown-hover">
+						<a id="nav_dropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+							Dropdown1
+						</a>
+						<ul class="dropdown-menu dropdown-menu-dark dropdown-hover-content" aria-labelledby="nav_dropdown">
+							<li><a class="dropdown-item" href="#">Dropdown Item</a></li>
+						</ul>
+					</li>
+					<li class="nav-item pe-1 dropdown dropdown-hover">
+						<a id="nav_dropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+							Dropdown2
+						</a>
+						<ul class="dropdown-menu dropdown-menu-dark dropdown-hover-content" aria-labelledby="nav_dropdown">
+							<li><a class="dropdown-item" href="#">Dropdown Item</a></li>
+						</ul>
 					</li>
 				</ul>
 			</div>
 		</div>
 	</nav>
-	<div id="subNavbar" class="d-flex border-bottom py-1">
-		<div class="container ps-2">
-			<nav aria-label="breadcrumb" style="--bs-breadcrumb-divider: '>';">
-				<ol id="breadcrumb" class="breadcrumb mb-0">
-					<li class="breadcrumb-item fw-bold" aria-current="main">Welcome to JayTR</li>
-				</ol>
-			</nav>
+	<div class="d-flex border-bottom py-1" style="font-size: 13px; height: 27px;">
+		<div id="subNavbar" class="container ps-3">
 		</div>
 	</div>
 </div>
@@ -56,6 +70,7 @@
 
 	function onPageLoad() {
 		resizeHeader($("#header"));
+		
 	}
 	
 	function resizeHeader(obj) {
@@ -65,16 +80,14 @@
 	function resizeIframe(obj) {
 		var pbLength = $("#header").children("nav").innerHeight() + $("#header").height();
 		var styleStr = "";
-// 		styleStr += "padding-top:"+ $("#header").children("nav").innerHeight() +"px;";
 		styleStr += "padding-bottom:"+ pbLength +"px;";
 		$(obj).attr("style", styleStr);
-// 		obj.style.height = obj.contentWindow.document.body.scrollHeight + 'px';
 	}
 	
 	// 각 화면에서 호출
 	function onClickNav(obj) {
 		// 클릭한 메뉴 활성화
-		$(".nav-link").attr("class", "nav-link");
+		$(".nav-link").removeClass("active");
 		$(obj).attr("class", "nav-link active");
 		// 모바일일 경우 클릭시 메뉴바 사라짐
 		$("#navbars").attr("class", "navbar-collapse collapse");
