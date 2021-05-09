@@ -13,48 +13,75 @@
     <!-- Bootstrap CSS -->
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
 	
+	<!-- MyCSS -->
+	<link href="/resources/css/MyCSS.css" rel="stylesheet" >
+	
 	<title>Bootstrap Site</title>
 </head>
 <body onload="onPageLoad()">
-<div class="container mt-3 p-5 pt-4 bg-light rounded">
-	<div class="row border-bottom border-secondary pb-1 mb-3">
+
+<!-- Breadcrum -->
+<%@ include file="../include/breadcrumb.jsp" %>
+
+<div class="container p-5 pt-4 bg-light rounded">
+	<div class="row border-bottom border-secondary pb-1 mb-2">
 		<div class="col">
 			<div class="row">
 				<div class="col-6">
-					<h3 class="fw-bold">Board</h3>
+					<h4 class="fw-bold me-2">${view.title}</h4>
 				</div>
 				<div class="col-6 text-end">
-					<button type="button" class="btn-sm btn-danger">
-						<a class="text-white text-decoration-none" href="/board/delete?bid=${view.bid}">삭제</a>
-					</button>
-					<button type="button" class="btn-sm btn-dark">
-						<a class="text-white text-decoration-none" href="/board/modify?bid=${view.bid}">수정</a>
-					</button>
-					<button type="button" class="btn-sm btn-secondary">
-						<a class="text-white text-decoration-none" href="/board/list">목록</a>
+					<button type="button" class="btn btn-secondary btn-sm">
+						<a class="text-reset text-decoration-none" href="/board/list">목록</a>
 					</button>
 				</div>
 			</div>
 		</div>
 	</div>
-	<div class="row bg-white p-4">
-		<div class="border-bottom">
-			<h5 class="fw-bold">${view.title}</h5>
+	<div class="row ps-1 me-3 mb-3" style="font-size:13px;">
+		<div class="col-auto">
+			<span>No. : </span>
+			<span>${view.bid}</span>
 		</div>
-		<div class="border-bottom py-2" style="font-size:14px;">
-			<div>
-				<span>작성자 : </span>
-				<span>${view.writer}</span>
-			</div>
-			<div>
-				<span>작성일자 : </span>
-				<span><fmt:formatDate value="${view.createTime}" pattern="yyyy-MM-dd HH:mm:ss"/></span>
-			</div>
+		<div class="col-auto">
+			<span>작성자 : </span>
+			<span>${view.writer}</span>
 		</div>
-		<div class="py-3">
+		<div class="col-auto">
+			<span>작성일자 : </span>
+			<span><fmt:formatDate value="${view.createTime}" pattern="yyyy-MM-dd HH:mm:ss"/></span>
+		</div>
+	</div>
+	<div class="row bg-white p-3">
+		<div class="col" style="font-size:15px;">
 			<span>${view.content}</span>
 		</div>
 	</div>
+	<div class="row border-bottom py-1 mt-2" style="font-size:12px;">
+		<div class="col text-end">
+			<a class="text-secondary" href="/board/delete?bid=${view.bid}">삭제</a>
+			<a class="text-secondary" href="/board/modify?bid=${view.bid}">수정</a>
+		</div>
+	</div>
+	<div class="row border-bottom ps-1 py-2" style="font-size:12px;">
+		<div class="col-12 mb-1">1. 김선재 / 2021-05-09 18:00:00</div>
+		<div class="col-12">첫번째 댓글 입니다.</div>
+	</div>
+	<div class="row border-bottom ps-1 py-2" style="font-size:12px;">
+		<div class="col-12 mb-1">2. 김선재 / 2021-05-09 18:30:00</div>
+		<div class="col-12">두번째 댓글 입니다.</div>
+	</div>
+	<form action="/" method="post">
+	<div class="row ps-1 py-3 gy-2">
+		<div class="col-12">
+			<textarea class="form-control" name="content" rows="2" style="font-size: 12px;"></textarea>
+		</div>
+		<div class="col-12 d-grid d-md-flex justify-content-md-end">
+			<button type="submit" class="jtr-btn-xs btn-dark text-white text-decoration-none">등록</button>
+<!-- 			<a type="submit" class="btn-sm btn-dark text-white text-decoration-none">등록</a> -->
+		</div>
+	</div>
+	</form>
 </div>
 
 	<!-- Bootstrap Bundle with Popper -->
@@ -65,10 +92,11 @@
 		if(parent) {
 			parent.onClickNav($("#nav_board", window.parent.document));
 			//서브 네비에 항목 출력
-			$("#breadcrumb", window.parent.document).empty()
-			$("#breadcrumb", window.parent.document).append("<li class='breadcrumb-item fw-bold' aria-current='main'>Board</li>")
-			$("#breadcrumb", window.parent.document).append("<li class='breadcrumb-item fw-bold active' aria-current='main'>View</li>")
+			$("#subNavbar", window.parent.document).empty();
 		}
+		//Breadcrum 추가
+		$("#breadcrumb").append("<li class='breadcrumb-item'><a class='text-reset text-decoration-none' href='/main'>Home</a></li>");
+		$("#breadcrumb").append("<li class='breadcrumb-item active' aria-current='page'><a class='text-reset text-decoration-none' href='/board/list'>Board</a></li>");
 	}
 </script>
 </html>

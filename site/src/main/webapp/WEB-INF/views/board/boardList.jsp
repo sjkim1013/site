@@ -13,15 +13,22 @@
     <!-- Bootstrap CSS -->
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
 	
+	<!-- MyCSS -->
+	<link href="/resources/css/MyCSS.css" rel="stylesheet" >
+	
 	<title>Bootstrap Site</title>
 </head>
 <body onload="onPageLoad()">
-<div class="container mt-3 p-5 pt-4 bg-light rounded">
+
+<!-- Breadcrum -->
+<%@ include file="../include/breadcrumb.jsp" %>
+
+<div class="container p-5 pt-4 bg-light rounded">
 	<div class="row border-bottom border-secondary pb-1 mb-3">
 		<div class="col">
 			<div class="row">
 				<div class="col-6">
-					<h3 class="fw-bold">Board</h3>
+					<h4 class="fw-bold">Board</h4>
 				</div>
 				<div class="col-6 text-end">
 					<button class="btn-sm btn-dark" data-bs-toggle="modal" data-bs-target="#writeModal">글쓰기</button>
@@ -94,9 +101,11 @@
 		if(parent) {
 			parent.onClickNav($("#nav_board", window.parent.document));
 			//서브 네비에 항목 출력
-			$("#breadcrumb", window.parent.document).empty()
-			$("#breadcrumb", window.parent.document).append("<li class='breadcrumb-item fw-bold active' aria-current='main'>Board</li>")
+			$("#subNavbar", window.parent.document).empty()
 		}
+		//Breadcrum 추가
+		$("#breadcrumb").append("<li class='breadcrumb-item'><a class='text-reset text-decoration-none' href='/main'>Home</a></li>");
+		$("#breadcrumb").append("<li class='breadcrumb-item active' aria-current='page'>Board</li>");
 	}
 </script>
 </html>

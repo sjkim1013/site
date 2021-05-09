@@ -54,7 +54,7 @@ public class BoardController {
 		BoardVO vo  = boardService.selectOne(bid);
 		
 		model.addAttribute("view", vo);
-		return "/board/boardDetailModify";
+		return "/board/boardModify";
 	}
 	
 	// 게시물 수정

@@ -55,7 +55,7 @@
 			</div>
 		</div>
 	</nav>
-	<div class="d-flex border-bottom py-1" style="font-size: 13px; height: 27px;">
+	<div class="d-flex border-bottom bg-light py-1" style="font-size: 13px; height: 28px;">
 		<div id="subNavbar" class="container ps-3">
 		</div>
 	</div>

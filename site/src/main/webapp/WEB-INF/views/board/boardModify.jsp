@@ -13,6 +13,9 @@
     <!-- Bootstrap CSS -->
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
 	
+	<!-- MyCSS -->
+	<link href="/resources/css/MyCSS.css" rel="stylesheet" >
+	
 	<title>Bootstrap Site</title>
 </head>
 <body onload="onPageLoad()">
@@ -26,8 +29,8 @@
 					<h3 class="fw-bold">Board</h3>
 				</div>
 				<div class="col-6 text-end">
-					<button type="submit" class="btn-sm btn-dark">저장</button>
-					<button type="button" class="btn-sm btn-secondary">
+					<button type="submit" class="btn btn-sm btn-dark">저장</button>
+					<button type="button" class="btn btn-sm btn-secondary">
 						<a class="text-white text-decoration-none" href="/board/view?bid=${view.bid}">뒤로</a>
 					</button>
 				</div>
