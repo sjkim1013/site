@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.site.mappers.reply">
+
+	<!-- 댓글 목록 -->
+	<select id="select" parameterType="int" resultType="com.site.domain.ReplyVO">
+		select
+			bid, rid, writer, content, createTime, password
+		from tbl_reply
+		where 1=1
+		and bid = #{bid}
+		order by rid desc
+	</select>
+	
+	<!-- 댓글 작성 -->
+	<insert id="insert" parameterType="com.site.domain.ReplyVO">
+		insert into tbl_reply (
+			bid,
+			writer,
+			content,
+			password
+		)value (
+			#{bid},
+			#{writer},
+			#{content},
+			#{password}
+		)
+	</insert>
+	
+	<!-- 댓글 삭제 -->
+	<delete id="delete" parameterType="com.site.domain.ReplyVO">
+		delete from tbl_reply
+		where 1=1
+		and bid = #{bid}
+		and rid = #{rid}
+	</delete>
+
+</mapper>

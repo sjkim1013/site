@@ -63,22 +63,26 @@
 			<a class="text-secondary" href="/board/modify?bid=${view.bid}">수정</a>
 		</div>
 	</div>
+	
+	<c:forEach items="${reply}" var="reply">
 	<div class="row border-bottom ps-1 py-2" style="font-size:12px;">
-		<div class="col-12 mb-1">1. 김선재 / 2021-05-09 18:00:00</div>
-		<div class="col-12">첫번째 댓글 입니다.</div>
+		<div class="col-12 mb-1">
+			<span>${reply.writer} / <fmt:formatDate value="${reply.createTime}" pattern="yyyy-MM-dd HH:mm:ss"/></span>&nbsp;
+			<span><a class="text-secondary" href="/reply/delete?bid=${reply.bid}&rid=${reply.rid}">삭제</a></span>
+		</div>
+		<div class="col-12">${reply.content}</div>
 	</div>
-	<div class="row border-bottom ps-1 py-2" style="font-size:12px;">
-		<div class="col-12 mb-1">2. 김선재 / 2021-05-09 18:30:00</div>
-		<div class="col-12">두번째 댓글 입니다.</div>
-	</div>
-	<form action="/" method="post">
+	</c:forEach>
+	
+	<form action="/reply/write" method="post">
+	<input type="hidden" name="bid" value="${view.bid}" />
+	<input type="hidden" name="writer" value="익명" />
 	<div class="row ps-1 py-3 gy-2">
 		<div class="col-12">
 			<textarea class="form-control" name="content" rows="2" style="font-size: 12px;"></textarea>
 		</div>
 		<div class="col-12 d-grid d-md-flex justify-content-md-end">
 			<button type="submit" class="jtr-btn-xs btn-dark text-white text-decoration-none">등록</button>
-<!-- 			<a type="submit" class="btn-sm btn-dark text-white text-decoration-none">등록</a> -->
 		</div>
 	</div>
 	</form>

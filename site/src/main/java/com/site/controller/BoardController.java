@@ -12,7 +12,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.site.domain.BoardVO;
+import com.site.domain.ReplyVO;
 import com.site.service.BoardService;
+import com.site.service.ReplyService;
 
 @Controller
 @RequestMapping("/board/*")
@@ -20,6 +22,9 @@ public class BoardController {
 	
 	@Inject
 	BoardService boardService;
+
+	@Inject
+	ReplyService replyService;
 
 	// 게시물 목록
 	@RequestMapping(value="/list", method=RequestMethod.GET)
@@ -42,7 +47,20 @@ public class BoardController {
 		// Content 줄바꿈 처리
 		vo.setContent(vo.getContent().replace("\r\n", "<br>"));
 		
+		// 댓글 조회
+		List<ReplyVO> replyList = null;
+		replyList = replyService.select(bid);
+
+		// 댓글 Content 줄바꿈 처리
+		ReplyVO replyVo = null;
+		for(int i=0; i<replyList.size(); i++) {
+			replyVo = replyList.get(i);
+			replyVo.setContent(replyVo.getContent().replace("\r\n", "<br>"));
+			replyList.set(i, replyVo);
+		}
+		
 		model.addAttribute("view", vo);
+		model.addAttribute("reply", replyList);
 		return "/board/boardDetail";
 	}
 	

@@ -29,12 +29,12 @@ public class BoardServiceImpl implements BoardService {
 	@Override
 	public int modify(BoardVO vo) throws Exception {
 
-		return dao.modify(vo);
+		return dao.update(vo);
 	}
 
 	@Override
 	public int write(BoardVO vo) throws Exception {
-		return dao.write(vo);
+		return dao.insert(vo);
 	}
 
 	@Override

@@ -29,15 +29,15 @@ public class BoardDAOImpl implements BoardDAO {
 	}
 
 	@Override
-	public int modify(BoardVO vo) throws Exception {
+	public int update(BoardVO vo) throws Exception {
 		
-		return sql.update(namespace +".modify", vo);
+		return sql.update(namespace +".update", vo);
 	}
 
 	@Override
-	public int write(BoardVO vo) throws Exception {
+	public int insert(BoardVO vo) throws Exception {
 
-		return sql.insert(namespace +".write", vo);
+		return sql.insert(namespace +".insert", vo);
 	}
 
 	@Override

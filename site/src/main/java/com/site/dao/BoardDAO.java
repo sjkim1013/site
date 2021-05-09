@@ -10,9 +10,9 @@ public interface BoardDAO {
 	// 게시물 조회
 	public BoardVO selectOne(int bid) throws Exception;
 	// 게시물 수정
-	public int modify(BoardVO vo) throws Exception;
+	public int update(BoardVO vo) throws Exception;
 	// 게시물 등록
-	public int write(BoardVO vo) throws Exception;
+	public int insert(BoardVO vo) throws Exception;
 	// 게시물 삭제
 	public int delete(int bid) throws Exception;
 }

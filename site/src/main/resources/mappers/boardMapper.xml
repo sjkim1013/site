@@ -13,7 +13,7 @@
 		limit 10
 	</select>
 
-	<!-- 게시물 목록 -->
+	<!-- 게시물 조회 -->
 	<select id="selectOne" parameterType="int" resultType="com.site.domain.BoardVO">
 		select
 			bid, title, content, writer, createTime
@@ -23,7 +23,7 @@
 	</select>
 
 	<!-- 게시물 수정 -->
-	<update id="modify" parameterType="com.site.domain.BoardVO">
+	<update id="update" parameterType="com.site.domain.BoardVO">
 		update tbl_board set
 			title = #{title},
 			writer = #{writer},
@@ -33,7 +33,7 @@
 	</update>
 	
 	<!-- 게시물 작성 -->
-	<insert id="write" parameterType="com.site.domain.BoardVO">
+	<insert id="insert" parameterType="com.site.domain.BoardVO">
 		insert into tbl_board (
 			title,
 			writer,
@@ -46,10 +46,10 @@
 	</insert>
 	
 	<!-- 게시물 삭제 -->
-	<insert id="delete" parameterType="int">
+	<delete id="delete" parameterType="int">
 		delete from tbl_board
 		where 1=1
 		and bid = #{bid}
-	</insert>
+	</delete>
 
 </mapper>
