@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.Map;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -28,10 +30,14 @@ public class BoardController {
 
 	// 게시물 목록
 	@RequestMapping(value="/list", method=RequestMethod.GET)
-	public String getList(@RequestParam Map<String, Object> param, Model model) throws Exception {
+	public String getList(@RequestParam Map<String, Object> param, Model model, HttpServletRequest request) throws Exception {
 		
 		List<BoardVO> list = null;
 		list = boardService.select();
+		
+		// iframe 세션 유지
+		HttpSession session = request.getSession();
+		session.setAttribute("mainIframeSession", "/board/list");
 		
 		model.addAttribute("list", list);
 		return "/board/boardList";
@@ -39,7 +45,7 @@ public class BoardController {
 	
 	// 게시물 상세 화면
 	@RequestMapping(value="/view", method=RequestMethod.GET)
-	public String getView(@RequestParam Map<String, Object> param, Model model) throws Exception {
+	public String getView(@RequestParam Map<String, Object> param, Model model, HttpServletRequest request) throws Exception {
 		
 		int bid = Integer.parseInt((String)param.get("bid"));
 		BoardVO vo  = boardService.selectOne(bid);
@@ -59,6 +65,10 @@ public class BoardController {
 			replyList.set(i, replyVo);
 		}
 		
+		// iframe 세션 유지
+		HttpSession session = request.getSession();
+		session.setAttribute("mainIframeSession", "/board/view?bid="+ bid);
+		
 		model.addAttribute("view", vo);
 		model.addAttribute("reply", replyList);
 		return "/board/boardDetail";
@@ -66,10 +76,14 @@ public class BoardController {
 	
 	// 게시물 수정 화면
 	@RequestMapping(value="/modify", method=RequestMethod.GET)
-	public String getModify(@RequestParam Map<String, Object> param, Model model) throws Exception {
+	public String getModify(@RequestParam Map<String, Object> param, Model model, HttpServletRequest request) throws Exception {
 		
 		int bid = Integer.parseInt((String)param.get("bid"));
 		BoardVO vo  = boardService.selectOne(bid);
+		
+		// iframe 세션 유지
+		HttpSession session = request.getSession();
+		session.setAttribute("mainIframeSession", "/board/modify?bid="+ bid);
 		
 		model.addAttribute("view", vo);
 		return "/board/boardModify";

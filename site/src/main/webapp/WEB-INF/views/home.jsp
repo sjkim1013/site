@@ -21,7 +21,7 @@
 <div id="header">
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top py-1">
 		<div class="container">
-			<a class="navbar-brand fw-bolder me-5" href="/">JayTR</a>
+			<a class="navbar-brand fw-bolder me-5" target="mainIframe" href="/main">JayTR</a>
 			<!-- 화면 축소 시 버튼 -->
 			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbars" aria-controls="navbars" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
@@ -61,7 +61,7 @@
 	</div>
 </div>
 
-	<iframe id="mainIframe" name="mainIframe" src="/main" frameborder="0" width="100%" height="100%" onload="resizeIframe(this)"></iframe>
+	<iframe id="mainIframe" name="mainIframe" frameborder="0" width="100%" height="100%" onload="resizeIframe(this)"></iframe>
 
 	<!-- Bootstrap Bundle with Popper -->
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
@@ -71,6 +71,10 @@
 	function onPageLoad() {
 		resizeHeader($("#header"));
 		
+		// iframe 세션 유지
+		if("${mainIframeSession}" != "") {
+			$("#mainIframe").attr("src", "${mainIframeSession}");
+		}
 	}
 	
 	function resizeHeader(obj) {
