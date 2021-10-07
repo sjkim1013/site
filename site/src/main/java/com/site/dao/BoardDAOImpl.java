@@ -2,16 +2,18 @@ package com.site.dao;
 
 import java.util.List;
 
-import javax.inject.Inject;
+import javax.annotation.Resource;
 
 import org.apache.ibatis.session.SqlSession;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.site.domain.BoardVO;
 
 @Repository
 public class BoardDAOImpl implements BoardDAO {
-	@Inject
+	@Autowired
+	@Resource(name="sqlSessionMaria")
 	private SqlSession sql;
 	
 	private static String namespace = "com.site.mappers.board";

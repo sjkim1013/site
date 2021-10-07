@@ -23,6 +23,31 @@
 .fs-12px {
 	font-size: 12px;
 }
+.fs-11px {
+	font-size: 11px;
+}
+.fs-10px {
+	font-size: 10px;
+}
+.fs-9px {
+	font-size: 9px;
+}
+
+/* Border color */
+.border-gray {
+	border-color: rgb(210, 210, 210)!important;
+}
+
+/* 네비바 */
+.jtr-nav {
+	font-size: 12px;
+}
+.jtr-nav-link {
+	display: block;
+    padding: .25rem 1rem;
+    text-decoration: none;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out;
+}
 
 /* 버튼 스타일 */
 .jtr-btn-xs {

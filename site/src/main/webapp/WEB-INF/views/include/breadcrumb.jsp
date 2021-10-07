@@ -1,7 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<div class="container border-bottom px-4 pb-1 mt-4 mb-2" style="font-size: 12px;">
-	<nav aria-label="breadcrumb" style="--bs-breadcrumb-divider: '>';">
-		<ol id="breadcrumb" class="breadcrumb mb-0">
+<div class="px-3 fs-10px">
+	<nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+		<ol class="breadcrumb">
+			<li class="breadcrumb-item">
+				<a class="text-decoration-none text-secondary" href="#">Home</a>
+			</li>
+			<li class="breadcrumb-item active" aria-current="page">Page</li>
 		</ol>
 	</nav>
 </div>

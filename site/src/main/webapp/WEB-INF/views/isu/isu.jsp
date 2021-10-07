@@ -21,10 +21,10 @@
 <div class="container">
 <!-- Header -->
 <%@ include file="/WEB-INF/views/include/header.jsp" %>
-	
-<div class="border p-4 rounded text-secondary" style="background-color: rgb(220, 220, 220);">
-	<h2>Welcome to JayTR</h2>
-	<span>This is a site of liberty, opportunity and integration.</span>
+<%@ include file="/WEB-INF/views/include/breadcrumb.jsp" %>
+
+<div class="fs-12px px-4">
+	<span>Isu Database connection : ${test}</span>
 </div>
 
 </div>

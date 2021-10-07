@@ -27,7 +27,7 @@ public class HomeController {
 	 */
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Locale locale, Model model, HttpServletRequest request) {
-		logger.info("Welcome home! The client locale is {}.", locale);
+//		logger.info("Welcome home! The client locale is {}.", locale);
 		
 		Date date = new Date();
 		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
@@ -38,6 +38,20 @@ public class HomeController {
 		
 		return "home";
 	}
+	
+	@RequestMapping(value = "/prev", method = RequestMethod.GET)
+	public String homePrev(Locale locale, Model model, HttpServletRequest request) {
+//		logger.info("Welcome home! The client locale is {}.", locale);
+		
+		Date date = new Date();
+		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
+		
+		String formattedDate = dateFormat.format(date);
+		
+		model.addAttribute("serverTime", formattedDate );
+		
+		return "prev/homePrev";
+	}
 
 	// 메인 화면 iframe
 	@RequestMapping(value="/main", method=RequestMethod.GET)
@@ -47,7 +61,7 @@ public class HomeController {
 		HttpSession session = request.getSession();
 		session.setAttribute("mainIframeSession", "/main");
 		
-		return "main";
+		return "prev/main";
 	}
 	
 }

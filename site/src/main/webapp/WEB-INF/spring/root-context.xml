@@ -10,24 +10,48 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd">
 	
 	<!-- Root Context: defines shared resources visible to all other web components -->
-	<bean
-	 class="org.springframework.jdbc.datasource.DriverManagerDataSource"
-	 id="dataSource">
-	 <property name="driverClassName" value="org.mariadb.jdbc.Driver" />
-	 <property name="url" value="jdbc:mariadb://127.0.0.1:3306/site" />
-	 <property name="username" value="site" />
-	 <property name="password" value="1111" />
+	
+	<!-- Database -->
+	
+	<!-- MariaDB -->
+	
+	<bean id="dataSourceMaria" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="org.mariadb.jdbc.Driver" />
+		<property name="url" value="jdbc:mariadb://127.0.0.1:3306/site" />
+		<property name="username" value="site" />
+		<property name="password" value="k3104s" />
 	</bean>
 	
-	<bean id="sqlSessionFactory"
-	 class="org.mybatis.spring.SqlSessionFactoryBean">
-	 <property name="dataSource" ref="dataSource" />
-	 <property name="configLocation" value="classpath:/mybatis-config.xml" />
-	 <property name="mapperLocations" value="classpath:mappers/**/*Mapper.xml" />
+	<bean id="sqlSessionFactoryMaria" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSourceMaria" />
+		<property name="configLocation" value="classpath:/mybatis-config.xml" />
+		<property name="mapperLocations" value="classpath:mappers/maria/**/*Mapper.xml" />
 	</bean>
 	
-	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate" destroy-method="clearCache">
-	 <constructor-arg name="sqlSessionFactory" ref="sqlSessionFactory"/>
+	<bean id="sqlSessionMaria" class="org.mybatis.spring.SqlSessionTemplate" destroy-method="clearCache">
+		<constructor-arg name="sqlSessionFactory" ref="sqlSessionFactoryMaria"/>
 	</bean>
+	
+	<!-- MSSQL - 그룹웨어 -->
+	
+	<bean id="dataSourceGW" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="com.microsoft.sqlserver.jdbc.SQLServerDriver" />
+		<property name="url" value="jdbc:sqlserver://175.119.100.138;databaseName=COVI_GROUPWARE" />
+		<property name="username" value="gwadmin" />
+		<property name="password" value="gwadmin" />
+	</bean>
+	
+	<bean id="sqlSessionFactoryGW" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSourceGW" />
+		<property name="configLocation" value="classpath:/mybatis-config.xml" />
+		<property name="mapperLocations" value="classpath:mappers/gw/**/*Mapper.xml" />
+	</bean>
+	
+	<bean id="sqlSessionGW" class="org.mybatis.spring.SqlSessionTemplate" destroy-method="clearCache">
+		<constructor-arg name="sqlSessionFactory" ref="sqlSessionFactoryGW"/>
+	</bean>
+	
+	<!-- MapperConfigurer setup for MyBatis Database Layer with @Mapper("deptMapper") in DeptMapper Interface -->
+
 
 </beans>
