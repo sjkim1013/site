@@ -11,10 +11,7 @@
     
     <!-- Bootstrap CSS -->
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
-	
-	<!-- MyCSS -->
-	<link href="/resources/css/MyCSS.css" rel="stylesheet" >
-	
+
 	<title>JayTR</title>
 </head>
 <body onload="onPageLoad()">
@@ -22,7 +19,7 @@
 <!-- Header -->
 <%@ include file="/WEB-INF/views/include/header.jsp" %>
 	
-<div class="border p-4 rounded text-secondary" style="background-color: rgb(220, 220, 220);">
+<div class="border p-4 rounded text-secondary bg-gray">
 	<h2>Welcome to JayTR</h2>
 	<span>This is a site of liberty, opportunity and integration.</span>
 </div>
@@ -34,7 +31,13 @@
 <script>
 
 	function onPageLoad() {
-		
+// 		$(".jtr-nav-link").hover(
+// 			function() {
+// 			   $('.collapse').collapse('show');
+// 			 }, function() {
+// 			   $('.collapse').collapse('hide');
+// 			 }
+// 		);
 	}
 	
 </script>

@@ -12,9 +12,6 @@
     <!-- Bootstrap CSS -->
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
 	
-	<!-- MyCSS -->
-	<link href="/resources/css/MyCSS.css" rel="stylesheet" >
-	
 	<title>JayTR</title>
 </head>
 <body onload="onPageLoad()">
@@ -23,9 +20,45 @@
 <%@ include file="/WEB-INF/views/include/header.jsp" %>
 <%@ include file="/WEB-INF/views/include/breadcrumb.jsp" %>
 
-<div class="fs-12px px-4">
-	<span>Isu Database connection : ${test}</span>
+<form action="isu/empList" method="GET">
+<div class="row px-3 pb-3 border-bottom">
+	<div class="col-7 col-sm-6 col-lg-4 col-xl-3">
+		<input name="sKeyword" class="form-control form-control-sm" type="text" placeholder="Keyword" />
+	</div>
+	<div class="col-auto px-0">
+		<button type="submit" class="btn btn-sm btn-outline-secondary">Search</button>
+	</div>
 </div>
+</form>
+
+<c:forEach items="${empList}" var="emp">
+<div class="px-3 py-2 border-bottom fs-12px text-secondary">
+<div class="row mb-2">
+	<div class="col-12 col-sm-auto fs-16px">
+		${emp.ent_name}
+	</div>
+	<div class="col d-flex align-items-end">
+		${emp.unit_name} | ${emp.jikchak_name} | ${emp.name} (${emp.person_code})
+	</div>
+</div>
+<div class="row mb-2">
+	<div class="col-auto">
+		<span class="fw-bold">Office.</span> ${emp.office_tel}
+	</div>
+	<div class="col-auto">
+		<span class="fw-bold">Mobile.</span> ${emp.mobile_tel}
+	</div>
+	<div class="col-auto">
+		<span class="fw-bold">Email.</span> ${emp.email}
+	</div>
+</div>
+<div class="row mb-2">
+	<div class="col">
+		<span>접속 :</span> <a class="text-secondary" href="${emp.gw_link}" target="_blank">링크</a>
+	</div>
+</div>
+</div>
+</c:forEach>
 
 </div>
 <!-- Bootstrap Bundle with Popper -->
@@ -34,7 +67,11 @@
 <script>
 
 	function onPageLoad() {
+		$("#breadcrumb").append("<li class='breadcrumb-item text-secondary'>Isu</li>");
+		$("#breadcrumb").append("<li class='breadcrumb-item text-secondary'>Search Employees</li>");
 		
+		console.log("sjswork", "${keyword}");
+		$("input[name=sKeyword]").val("${keyword}");
 	}
 	
 </script>

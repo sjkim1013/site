@@ -37,10 +37,10 @@ public class BoardController {
 		
 		// iframe 세션 유지
 		HttpSession session = request.getSession();
-		session.setAttribute("mainIframeSession", "/board/list");
+		session.setAttribute("mainIframeSession", "board/list");
 		
 		model.addAttribute("list", list);
-		return "/board/boardList";
+		return "board/boardList";
 	}
 	
 	// 게시물 상세 화면
@@ -67,11 +67,11 @@ public class BoardController {
 		
 		// iframe 세션 유지
 		HttpSession session = request.getSession();
-		session.setAttribute("mainIframeSession", "/board/view?bid="+ bid);
+		session.setAttribute("mainIframeSession", "board/view?bid="+ bid);
 		
 		model.addAttribute("view", vo);
 		model.addAttribute("reply", replyList);
-		return "/board/boardDetail";
+		return "board/boardDetail";
 	}
 	
 	// 게시물 수정 화면
@@ -83,10 +83,10 @@ public class BoardController {
 		
 		// iframe 세션 유지
 		HttpSession session = request.getSession();
-		session.setAttribute("mainIframeSession", "/board/modify?bid="+ bid);
+		session.setAttribute("mainIframeSession", "board/modify?bid="+ bid);
 		
 		model.addAttribute("view", vo);
-		return "/board/boardModify";
+		return "board/boardModify";
 	}
 	
 	// 게시물 수정
@@ -95,7 +95,7 @@ public class BoardController {
 		
 		boardService.modify(vo);
 		
-		return "redirect:/board/view?bid="+ vo.getBid();
+		return "redirect:board/view?bid="+ vo.getBid();
 	}
 
 	// 게시물 등록
@@ -104,7 +104,7 @@ public class BoardController {
 		
 		boardService.write(vo);
 		
-		return "redirect:/board/list";
+		return "redirect:board/list";
 	}
 
 	// 게시물 삭제
@@ -115,7 +115,7 @@ public class BoardController {
 		
 		boardService.delete(bid);
 		
-		return "redirect:/board/list";
+		return "redirect:board/list";
 	}
 
 }

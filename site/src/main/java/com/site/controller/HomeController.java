@@ -59,7 +59,7 @@ public class HomeController {
 		
 		// iframe 세션 유지
 		HttpSession session = request.getSession();
-		session.setAttribute("mainIframeSession", "/main");
+		session.setAttribute("mainIframeSession", "main");
 		
 		return "prev/main";
 	}

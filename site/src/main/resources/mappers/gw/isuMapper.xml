@@ -4,7 +4,38 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.site.mappers.isu">
 
-	<!-- 게시물 목록 -->
+	<!-- 직원 검색 -->
+	<select id="selectEmployees" parameterType="string" resultType="com.site.domain.IsuEmployeeVO">
+		select top 10
+		  a.ENT_CODE,
+		  ent.NAME as ent_name,
+		  a.UNIT_CODE,
+		  un.NAME as unit_name,
+		  a.PERSON_CODE,
+		  a.DISPLAY_NAME as name,
+		  a.PSTN_CODE as jikchak_code,
+		  jp.NAME as jikchak_name,
+		  a.OFFICE_TEL,
+		  a.MOBILE_TEL,
+		  a.email,
+		  case when a.USAGE_STATE = 'A' then '사용' else '사용안함' end as 사용여부,
+		  'http://gw.isu.co.kr/CoviWeb/gate/AutoAuthentication.aspx?UserID='+ a.PERSON_CODE +'&#38;BackUrl=/coviweb' as gw_link
+		from ORG_PERSON a
+		inner join ORG_ENTERPRISE ent on ent.ENT_CODE = a.ENT_CODE
+		inner join ORG_UNIT un on un.UNIT_CODE = a.UNIT_CODE
+		inner join ORG_JOBPOSITION jp on jp.PSTN_CODE = a.PSTN_CODE
+		where 1=1
+		and a.USAGE_STATE = 'A'
+		and (a.DISPLAY_NAME like '%'+ #{keyword} +'%'
+		  or a.PERSON_CODE like '%'+ #{keyword} +'%'
+		  or a.OFFICE_TEL like '%'+ #{keyword} +'%'
+		  or a.MOBILE_TEL like '%'+ #{keyword} +'%'
+		  or a.EMAIL like '%'+ #{keyword} +'%'
+		  or un.NAME like '%'+ #{keyword} +'%')
+		 order by ent.sort_key, jp.sort_key, a.person_code
+	</select>
+	
+	<!-- 테스트 -->
 	<select id="selectTest" resultType="string">
 		select top 1 a.person_code
 		from org_person a

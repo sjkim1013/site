@@ -37,10 +37,10 @@ public class BoardPrevController {
 		
 		// iframe 세션 유지
 		HttpSession session = request.getSession();
-		session.setAttribute("mainIframeSession", "/prev/board/list");
+		session.setAttribute("mainIframeSession", "prev/board/list");
 		
 		model.addAttribute("list", list);
-		return "/prev/board/boardList";
+		return "prev/board/boardList";
 	}
 	
 	// 게시물 상세 화면
@@ -67,11 +67,11 @@ public class BoardPrevController {
 		
 		// iframe 세션 유지
 		HttpSession session = request.getSession();
-		session.setAttribute("mainIframeSession", "/board/view?bid="+ bid);
+		session.setAttribute("mainIframeSession", "board/view?bid="+ bid);
 		
 		model.addAttribute("view", vo);
 		model.addAttribute("reply", replyList);
-		return "/prev/board/boardDetail";
+		return "prev/board/boardDetail";
 	}
 	
 	// 게시물 수정 화면
@@ -83,10 +83,10 @@ public class BoardPrevController {
 		
 		// iframe 세션 유지
 		HttpSession session = request.getSession();
-		session.setAttribute("mainIframeSession", "/board/modify?bid="+ bid);
+		session.setAttribute("mainIframeSession", "board/modify?bid="+ bid);
 		
 		model.addAttribute("view", vo);
-		return "/prev/board/boardModify";
+		return "prev/board/boardModify";
 	}
 	
 	// 게시물 수정
@@ -95,7 +95,7 @@ public class BoardPrevController {
 		
 		boardService.modify(vo);
 		
-		return "redirect:/prev/board/view?bid="+ vo.getBid();
+		return "redirect:prev/board/view?bid="+ vo.getBid();
 	}
 
 	// 게시물 등록
@@ -104,7 +104,7 @@ public class BoardPrevController {
 		
 		boardService.write(vo);
 		
-		return "redirect:/prev/board/list";
+		return "redirect:prev/board/list";
 	}
 
 	// 게시물 삭제
@@ -115,7 +115,7 @@ public class BoardPrevController {
 		
 		boardService.delete(bid);
 		
-		return "redirect:/prev/board/list";
+		return "redirect:prev/board/list";
 	}
 
 }

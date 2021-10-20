@@ -51,7 +51,7 @@
 			<tr>
 				<th scope="row">${list.bid}</th>
 				<td>
-					<a class="text-dark text-decoration-none" href="/boardPrev/view?bid=${list.bid}">${list.title}</a>
+					<a class="text-dark text-decoration-none" href="boardPrev/view?bid=${list.bid}">${list.title}</a>
 				</td>
 				<td>
 					<fmt:formatDate value="${list.createTime}" pattern="yyyy-MM-dd"/>

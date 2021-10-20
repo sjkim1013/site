@@ -19,7 +19,7 @@
 	<h1>JayTR에 오신 것을 환영합니다.</h1>
 	<p>게시판을 확인해주세요.</p>
 	<br/>
-	<a type="button" class="btn btn-dark" href="/board/list">View Board</a>
+	<a type="button" class="btn btn-dark" href="board/list">View Board</a>
 </div>
 
 	<!-- Bootstrap Bundle with Popper -->

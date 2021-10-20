@@ -25,7 +25,7 @@ public class ReplyController {
 		
 		replyService.write(vo);
 		
-		return "redirect:/board/view?bid="+ vo.getBid();
+		return "redirect:board/view?bid="+ vo.getBid();
 	}
 
 	// 댓글 삭제
@@ -41,7 +41,7 @@ public class ReplyController {
 		
 		replyService.delete(vo);
 		
-		return "redirect:/board/view?bid="+ vo.getBid();
+		return "redirect:board/view?bid="+ vo.getBid();
 	}
 
 }

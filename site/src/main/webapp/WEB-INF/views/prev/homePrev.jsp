@@ -2,6 +2,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <html>
 <head>
+	<base href="/JayTR/" />
     <!-- Required meta tags -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -21,7 +22,7 @@
 <div id="header">
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top py-1">
 		<div class="container">
-			<a class="navbar-brand fw-bolder me-5" target="mainIframe" href="/main">JayTR</a>
+			<a class="navbar-brand fw-bolder me-5" target="mainIframe" href="main">JayTR</a>
 			<!-- 화면 축소 시 버튼 -->
 			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbars" aria-controls="navbars" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
@@ -30,10 +31,10 @@
 			<div class="navbar-collapse collapse" id="navbars">
 				<ul class="navbar-nav me-auto mb-2 mb-lg-0">
 					<li class="nav-item pe-1">
-						<a id="nav_main" class="nav-link active" target="mainIframe" href="/main">Home</a>
+						<a id="nav_main" class="nav-link active" target="mainIframe" href="main">Home</a>
 					</li>
 					<li class="nav-item pe-1">
-						<a id="nav_board" class="nav-link" target="mainIframe" href="/board/list">Board</a>
+						<a id="nav_board" class="nav-link" target="mainIframe" href="boardPrev/list">Board</a>
 					</li>
 					<li class="nav-item pe-1 dropdown dropdown-hover">
 						<a id="nav_dropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
@@ -52,7 +53,7 @@
 						</ul>
 					</li>
 					<li class="nav-item pe-1">
-						<a class="nav-link" href="/">New.Ver</a>
+						<a class="nav-link" href="">New.Ver</a>
 					</li>
 				</ul>
 			</div>
