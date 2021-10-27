@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.site.mappers.member">
+
+	<!-- 게시물 조회 -->
+	<select id="loginSelect" parameterType="com.site.domain.MemberVO" resultType="com.site.domain.MemberVO">
+		select
+			email, pwd, name, role 
+		from t_member
+		where 1=1
+		and email = #{email}
+		and pwd = #{pwd}
+	</select>
+
+</mapper>

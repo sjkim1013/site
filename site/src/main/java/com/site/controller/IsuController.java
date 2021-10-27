@@ -24,7 +24,7 @@ public class IsuController {
 	@RequestMapping(value="/", method=RequestMethod.GET)
 	public String getIsu(Model model, HttpServletRequest request) throws Exception {
 
-		return "/isu/isu";
+		return "isu/isu";
 	}
 
 	// 게시물 목록
@@ -38,7 +38,7 @@ public class IsuController {
 			model.addAttribute("empList", isuService.selectEmployees(keyword));
 		}
 		
-		return "/isu/isu";
+		return "isu/isu";
 	}
 	
 }
